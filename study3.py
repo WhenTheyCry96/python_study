@@ -12,11 +12,13 @@ class calculator:
     def printself(self):
         print "youNeedTotakeSelf as variable1"
 
-
-cal1 = calculator()
-print type(cal1)
-print type(calculator())
-print(cal1.adder(10))
+    def safe_sum(a, b):
+        if type(a) is not type(b):
+            print ("Non-addable")
+            return
+        else:
+            result = a + b
+            return result
 
 
 class SonCalc(calculator):
@@ -35,11 +37,6 @@ class SonCalc(calculator):
             print "Method overriding"
 
 
-cal2 = SonCalc()
-cal2_res = cal2.calcpow()
-print cal2_res
-
-
 class dataProcess:
     def __init__(self, data):
         self.tmpData = data.split("|")
@@ -47,5 +44,15 @@ class dataProcess:
         self.age = self.tmpData[1]
 
 
-data = dataProcess("Hong|45")
-print data.name
+if __name__ is '__main__':
+
+    cal2 = SonCalc()
+    cal2_res = cal2.calcpow()
+    print cal2_res
+
+    cal1 = calculator()
+    print type(cal1)
+    print type(calculator())
+    print(cal1.adder(10))
+    data = dataProcess("Hong|45")
+    print data.name
